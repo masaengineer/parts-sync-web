@@ -33,6 +33,34 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# Devise for user authentication
+gem "devise"
+
+# Google OAuth2認証
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
+
+gem "kaminari"
+
+# Advanced search functionality for Active Record
+gem "ransack"
+
+# Rails internationalization
+gem "rails-i18n"
+
+# Add mega-tags for enhanced SEOz
+gem "meta-tags"
+
+# OAuth2認証のため
+gem "oauth2"
+# HTTPクライアントとして使用
+gem "faraday"
+
+gem "sidekiq"
+gem "sidekiq-scheduler"
+
+gem "csv"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -45,11 +73,15 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "faker"  # テストデータを生成するためのgem
+  gem "factory_bot_rails"  # テストデータを生成するためのgem
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "overcommit"  # Git hooksを管理するためのgem
 end
 
 group :test do
@@ -57,3 +89,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+
