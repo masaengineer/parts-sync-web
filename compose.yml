@@ -1,0 +1,92 @@
+services:
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      TZ: Asia/Tokyo
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    working_dir: /app
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bash -c "rm -f tmp/pids/server.pid && ./bin/dev"
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/app
+      - bundle_data:/usr/local/bundle:cached
+      - node_modules:/app/node_modules
+      - tmp-data:/app/tmp:cached
+    environment:
+      TZ: Asia/Tokyo
+      POSTGRES_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      REDIS_URL: redis://redis:6379/0
+      RAILS_LIVE_RELOAD_ENABLED: 'true'
+      RAILS_LIVE_RELOAD_HOST: '0.0.0.0'
+      RAILS_ENV: development
+    ports:
+      - '3000:3000'
+      - '12345:12345'
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  sidekiq:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    volumes:
+      - .:/app
+      - bundle_data:/usr/local/bundle:cached
+      - node_modules:/app/node_modules
+      - tmp-data:/app/tmp:cached
+    environment:
+      TZ: Asia/Tokyo
+      POSTGRES_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      REDIS_URL: redis://redis:6379/0
+      RAILS_ENV: development
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      web:
+        condition: service_started
+
+volumes:
+  bundle_data:
+  postgresql_data:
+  node_modules:
+  tmp-data:
+  redis_data:

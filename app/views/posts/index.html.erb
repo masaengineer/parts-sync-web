@@ -1,0 +1,300 @@
+<% content_for :title, "DaisyUI サンプル" %>
+
+<div class="container mx-auto px-4 py-8">
+  <!-- ヘッダーセクション -->
+  <div class="text-center mb-12">
+    <h1 class="text-5xl font-bold mb-4">DaisyUI コンポーネント集</h1>
+    <p class="text-xl opacity-70">TailwindCSS + DaisyUIの様々なコンポーネントとユーティリティのサンプル</p>
+    <div class="mt-6 flex justify-center gap-2">
+      <button class="btn btn-primary">プライマリ</button>
+      <button class="btn btn-secondary">セカンダリ</button>
+      <button class="btn btn-accent">アクセント</button>
+    </div>
+  </div>
+
+  <!-- アラートセクション -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">アラート</h2>
+    <div class="grid gap-4">
+      <div class="alert alert-info">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span>情報: 新機能が追加されました。</span>
+      </div>
+      <div class="alert alert-success">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span>成功: 変更が保存されました。</span>
+      </div>
+      <div class="alert alert-warning">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+        <span>警告: 完了していない項目があります。</span>
+      </div>
+      <div class="alert alert-error">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span>エラー: 問題が発生しました。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- カードセクション -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">カード</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- シンプルカード -->
+      <div class="card bg-base-100 shadow-xl">
+        <figure><img src="https://placehold.jp/400x225.png" alt="サンプル画像"/></figure>
+        <div class="card-body">
+          <h2 class="card-title">シンプルカード</h2>
+          <p>基本的なカードコンポーネントの例です。画像とテキスト内容を含みます。</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-primary">詳細を見る</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- バッジ付きカード -->
+      <div class="card bg-base-100 shadow-xl">
+        <figure>
+          <img src="https://placehold.jp/400x225.png" alt="サンプル画像"/>
+        </figure>
+        <div class="card-body">
+          <div class="flex justify-between items-center">
+            <h2 class="card-title">バッジ付きカード</h2>
+            <div class="badge badge-secondary">NEW</div>
+          </div>
+          <p>バッジが付いたカードの例です。重要な情報や状態を示すのに便利です。</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-primary">詳細を見る</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- アクションカード -->
+      <div class="card bg-base-100 shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title">アクションカード</h2>
+          <p>複数のアクションボタンを持つカードの例です。様々な操作を提供します。</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-sm">キャンセル</button>
+            <button class="btn btn-sm btn-primary">保存</button>
+            <button class="btn btn-sm btn-accent">公開</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フォームセクション -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">フォーム要素</h2>
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <form>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="form-control w-full">
+              <label class="label">
+                <span class="label-text">名前</span>
+              </label>
+              <input type="text" placeholder="名前を入力" class="input input-bordered w-full" />
+            </div>
+
+            <div class="form-control w-full">
+              <label class="label">
+                <span class="label-text">メールアドレス</span>
+              </label>
+              <input type="email" placeholder="example@mail.com" class="input input-bordered w-full" />
+            </div>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">カテゴリー</span>
+              </label>
+              <select class="select select-bordered w-full">
+                <option disabled selected>カテゴリーを選択</option>
+                <option>技術</option>
+                <option>デザイン</option>
+                <option>ビジネス</option>
+                <option>その他</option>
+              </select>
+            </div>
+
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">優先度</span>
+              </label>
+              <div class="flex gap-4">
+                <div class="form-control">
+                  <label class="label cursor-pointer">
+                    <span class="label-text mr-2">低</span>
+                    <input type="radio" name="priority" class="radio radio-primary" />
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer">
+                    <span class="label-text mr-2">中</span>
+                    <input type="radio" name="priority" class="radio radio-primary" checked />
+                  </label>
+                </div>
+                <div class="form-control">
+                  <label class="label cursor-pointer">
+                    <span class="label-text mr-2">高</span>
+                    <input type="radio" name="priority" class="radio radio-primary" />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-control w-full col-span-full">
+              <label class="label">
+                <span class="label-text">メッセージ</span>
+              </label>
+              <textarea class="textarea textarea-bordered h-24" placeholder="メッセージを入力"></textarea>
+            </div>
+
+            <div class="form-control">
+              <label class="label cursor-pointer">
+                <span class="label-text">利用規約に同意する</span>
+                <input type="checkbox" class="checkbox checkbox-primary" />
+              </label>
+            </div>
+          </div>
+
+          <div class="mt-6 flex justify-end gap-2">
+            <button type="button" class="btn">キャンセル</button>
+            <button type="submit" class="btn btn-primary">送信する</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- テーブルセクション -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">テーブル</h2>
+    <div class="overflow-x-auto">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>名前</th>
+            <th>職業</th>
+            <th>所在地</th>
+            <th>状態</th>
+            <th>アクション</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>山田太郎</td>
+            <td>ソフトウェアエンジニア</td>
+            <td>東京</td>
+            <td><div class="badge badge-success">アクティブ</div></td>
+            <td>
+              <div class="flex gap-2">
+                <button class="btn btn-xs btn-ghost">編集</button>
+                <button class="btn btn-xs btn-error">削除</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>佐藤花子</td>
+            <td>UIデザイナー</td>
+            <td>大阪</td>
+            <td><div class="badge badge-warning">休暇中</div></td>
+            <td>
+              <div class="flex gap-2">
+                <button class="btn btn-xs btn-ghost">編集</button>
+                <button class="btn btn-xs btn-error">削除</button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>鈴木一郎</td>
+            <td>プロダクトマネージャー</td>
+            <td>福岡</td>
+            <td><div class="badge badge-info">研修中</div></td>
+            <td>
+              <div class="flex gap-2">
+                <button class="btn btn-xs btn-ghost">編集</button>
+                <button class="btn btn-xs btn-error">削除</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- タブセクション -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">タブ</h2>
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <div role="tablist" class="tabs tabs-lifted">
+          <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="概要" checked />
+          <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+            <h3 class="text-xl font-bold mb-3">概要</h3>
+            <p>DaisyUIは、TailwindCSSのためのコンポーネントライブラリです。使いやすさ、カスタマイズ性、テーマシステムが特徴です。</p>
+          </div>
+
+          <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="機能" />
+          <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+            <h3 class="text-xl font-bold mb-3">機能</h3>
+            <ul class="list-disc pl-5 space-y-2">
+              <li>40以上のインタラクティブコンポーネント</li>
+              <li>カスタマイズ可能なテーマシステム</li>
+              <li>レスポンシブデザイン対応</li>
+              <li>セマンティックな色名</li>
+            </ul>
+          </div>
+
+          <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="インストール" />
+          <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+            <h3 class="text-xl font-bold mb-3">インストール</h3>
+            <div class="mockup-code">
+              <pre><code>npm i daisyui</code></pre>
+            </div>
+            <p class="mt-4">その後、Tailwind CSSの設定ファイルにDaisyUIをプラグインとして追加します。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ステップセクション -->
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">ステップ</h2>
+    <ul class="steps steps-vertical lg:steps-horizontal w-full">
+      <li class="step step-primary">アカウント作成</li>
+      <li class="step step-primary">個人情報</li>
+      <li class="step">利用規約確認</li>
+      <li class="step">完了</li>
+    </ul>
+  </section>
+
+  <!-- フッター -->
+  <footer class="footer p-10 bg-neutral text-neutral-content rounded-box mt-20">
+    <div>
+      <span class="footer-title">サービス</span>
+      <a class="link link-hover">デザイン</a>
+      <a class="link link-hover">マーケティング</a>
+      <a class="link link-hover">開発</a>
+      <a class="link link-hover">サポート</a>
+    </div>
+    <div>
+      <span class="footer-title">会社</span>
+      <a class="link link-hover">私たちについて</a>
+      <a class="link link-hover">お問い合わせ</a>
+      <a class="link link-hover">採用情報</a>
+      <a class="link link-hover">ニュース</a>
+    </div>
+    <div>
+      <span class="footer-title">法的</span>
+      <a class="link link-hover">利用規約</a>
+      <a class="link link-hover">プライバシーポリシー</a>
+      <a class="link link-hover">Cookie設定</a>
+    </div>
+  </footer>
+</div>
